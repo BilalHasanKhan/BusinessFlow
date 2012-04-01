@@ -185,7 +185,6 @@
     <Content Include="Content\Images\info.png" />
     <Content Include="Content\Images\main-background.png" />
     <Content Include="Content\Images\message.png" />
-    <Content Include="Content\Images\newdotnetlogosmall.png" />
     <Content Include="Content\Images\print.png" />
     <Content Include="Content\Images\purchase.png" />
     <Content Include="Content\Images\search.png" />
