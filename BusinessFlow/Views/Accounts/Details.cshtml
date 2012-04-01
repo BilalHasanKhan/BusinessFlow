@@ -1,0 +1,68 @@
+@model BusinessFlow.ViewModels.AccountsDetailsViewModel
+
+@{
+    ViewBag.Title = "Details_All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+<script src="@Url.Content("~/Scripts/2011.3.1115/jquery-1.6.4.min.js")" type="text/javascript"></script>
+ <script language="javascript" type="text/javascript">
+
+     $(document).ready(function () {
+
+         $('.button').live('click',function () {
+             $.ajax({
+                 type: "POST",
+                 url: "/Accounts/ClientRegister",
+                 data:null
+                 
+             });
+         
+         
+         });
+
+     });
+</script>
+
+ }
+<h2> Enquiry Details</h2>
+
+
+    <fieldset>
+    <legend>Tentative Delivery Date </legend>
+       <div class="display-field">@String.Format("{0:dddd, MMMM d, yyyy}", Model.Enquiry.TentativeDeliveryDate)</div>
+    </fieldset>
+    <fieldset>
+    <legend>Requirement Summary</legend>
+    <div class="display-field">@Model.Enquiry.Requirement</div>
+    </fieldset>
+    <fieldset>
+    <legend>Contact Details</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Contact>("Contact").Name("contact"))</div>
+    </fieldset>
+    <fieldset>
+    <legend>Site Address</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Address>("Address").Name("address"))</div>
+    </fieldset>
+    <fieldset>
+    <legend>Designer Contact</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Contact>("Designer").Name("designer"))</div>
+    </fieldset>
+     <fieldset>
+    <legend>Additional Details</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.EnquiryDetails>("Details").Name("enquiryDetails"))</div>
+    <div>
+    <h3>Enquiry is from unregistered client. Please click on register button <br />to send client the registration details and register client </h3>
+    
+    </div>
+    <input type="submit" class="button" value="Register Client"/>
+    </fieldset>
+    
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Enquiry.EnquiryID }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Register Client", "ClientRegister", new { id = Model.Enquiry.EnquiryID })
+   
+</p>

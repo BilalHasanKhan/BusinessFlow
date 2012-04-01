@@ -1,0 +1,12 @@
+﻿@model BusinessFlow.Models.Address
+
+          <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+           </div>
+           <div>
+            @Html.TextAreaFor(model => model.address, 7, 30, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.address)
+         </div>
+     
+  
+

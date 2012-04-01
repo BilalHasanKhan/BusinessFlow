@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+<div class="message">
+     <h4>View Profile</h4>     
+     <p>Click here to verify or update your contact details</p>
+
+@Html.ActionLink("Profile","ContactDetails","Clients")
+</div>
+
+<div class="gridMessageInfo">
+     <h4>Your Enquiries</h4>     
+     <p>Your project details and progress</p>
+ @(Html.Telerik().Grid<BusinessFlow.ViewModels.ClientEnquiryViewModel>()
+            .Name("clientEnquiries")
+            .DataKeys(keys => keys.Add(e => e.EnquiryID)
+                                               .RouteKey("EnquiryID") // post the data key as "EnquiryID"
+            )
+            .DataBinding(dataBinding =>
+                 {
+                     dataBinding.Ajax()
+                         .Select("ClientEnquiries", "Clients");
+                                                 
+                 })
+            .Columns(columns =>
+            {
+                columns.Bound(e => e.EnquiryID).ReadOnly().Width(20);
+                columns.Bound(e => e.Requirement).ReadOnly().Width(100);
+                columns.Bound(e => e.Amount).ReadOnly().Width(200);
+                columns.Bound(e => e.Status).ReadOnly().Width(200);
+                columns.Bound(e => e.TentativeDeliveryDate).ReadOnly().Format("{0:MM/dd/yyyy}").Width(100);
+                columns.Command(command => command.Custom("Details").Text("Details").Action("EnquiryDetails", "Clients").ButtonType(GridButtonType.Text)).Width(200);
+                              
+            })
+            )
+</div>
+
+<div class="message">
+     <h4>Contact Us</h4>     
+     <p>If you would like to contact us, click on the link below</p>
+@Html.ActionLink("Contact Us","ContactUs","Clients")
+</div>
+</div>
+

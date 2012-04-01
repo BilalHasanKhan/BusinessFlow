@@ -1,0 +1,15 @@
+@model BusinessFlow.Models.Project
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    Enquiry
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.EnquiryID, ((IEnumerable<BusinessFlow.Models.Enquiry>)ViewBag.PossibleEnquiries).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.EnquiryID.ToString(),
+        Selected = (Model != null) && (option.EnquiryID == Model.EnquiryID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.EnquiryID)
+</div>

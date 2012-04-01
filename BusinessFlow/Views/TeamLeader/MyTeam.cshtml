@@ -1,0 +1,55 @@
+﻿@model BusinessFlow.ViewModels.EmployeeTeamViewModel
+
+@{
+    ViewBag.Title = "My Team";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+
+   <script src="@Url.Content("~/Scripts/2011.3.1115/jquery-1.6.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+     <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+  
+}
+
+<div id="content">
+   <div class="gridMessageInfo">
+    <h4>Team Members</h4>     
+     <p>Click employeeId to view details of a particular employee and assign tasks.</p>
+               @(Html.Telerik().Grid<BusinessFlow.ViewModels.EmployeeTeamViewModel>()
+            .Name("Grid")
+            .DataKeys(keys => keys.Add(e => e.EmployeeID)
+                                          .RouteKey("EmployeeID") // post the data key as "EnquiryID"
+            )
+             .DataBinding(dataBinding =>
+                 {
+                     dataBinding.Ajax()
+                         .Select("SelectTeamMembers", "TeamLeader");
+                                                 
+                 })
+            .Columns(columns =>
+            {
+                columns.Bound(e => e.EmployeeID).ReadOnly().Width(20).Format(Html.ActionLink("{0}", "Details", new { id = "{0}" }).ToHtmlString()).Encoded(false);
+                columns.Bound(e => e.EmployeeName).ReadOnly().Width(200);
+                columns.Bound(e => e.EmployeeEmail).ReadOnly().Width(200);
+                columns.Bound(e => e.ContactNumber).ReadOnly().Width(200);
+                columns.Bound(e => e.isTaskAssigned).ReadOnly().Width(100);
+                columns.Bound(e => e.AssignmentCount).ReadOnly().Width(100);
+                columns.Command(command => command.Custom("AssignTask").Text("Assign Task").Action("AssignTaskToEmployee", "TeamLeader").ButtonType(GridButtonType.Text)).Width(200);
+               
+            })
+            .Sortable(sort => sort.OrderBy(order => order.Add(e => e.EmployeeID).Descending())) // order by EnquiryID so that inserted items appear on top of the grid (optional)
+            .Pageable())
+
+</div>
+</div>
+   <div>
+           @(Html.Telerik().ScriptRegistrar().
+           OnDocumentReady(@<text></text>)
+           .Globalization(true))
+           
+           
+    </div> 
+
+

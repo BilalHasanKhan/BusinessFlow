@@ -1,0 +1,82 @@
+﻿@model BusinessFlow.Models.EmployeeTask
+
+@{
+    ViewBag.Title = "My Tasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="content">
+
+   <div class="gridMessageInfo">
+    <h4>My details</h4> 
+    <p>Please verify if your details are correct in system records.</p>
+       @(Html.Telerik().Grid<BusinessFlow.ViewModels.EmployeeTeamViewModel>()
+            .Name("myDetails")
+            .DataBinding(dataBinding =>
+                 {
+                     dataBinding.Ajax()
+                         .Select("MyDetails", "Employees");
+                                                 
+                 })
+            .Columns(columns =>
+            {
+                columns.Bound(e => e.EmployeeID).ReadOnly().Width(20);
+                columns.Bound(e => e.EmployeeName).ReadOnly().Width(100);
+                columns.Bound(e => e.EmployeeEmail).ReadOnly().Width(200);
+                columns.Bound(e => e.ContactNumber).ReadOnly().Width(200);
+                columns.Bound(e => e.TeamName).ReadOnly().Width(100);
+                columns.Bound(e => e.isTeamLeader).ReadOnly().Width(100);
+                columns.Bound(e => e.isTaskAssigned).ReadOnly().Width(100);
+                columns.Bound(e => e.TeamLeaderName).ReadOnly().Width(100);
+                              
+            })
+            )
+
+    </div>
+    <br />
+    <br />
+
+   <div class="gridMessageInfo">
+    <h4>Tasks assigned to me</h4> 
+    <p>Grid below shows tasks assigned to me.</p>
+       @(Html.Telerik().Grid<BusinessFlow.ViewModels.EmployeeTaskViewModel>()
+            .Name("Grid")
+            .DataKeys(keys => keys.Add(e => e.TaskID)
+                                          .RouteKey("TaskID") // post the data key as "TaskID"
+            )
+             .DataBinding(dataBinding =>
+                 {
+                     dataBinding.Ajax()
+                         .Select("MyTaskDetails", "Employees")
+                         .Update("UpdateTask", "Employees");
+                                                 
+                 })
+            .Columns(columns =>
+            {
+                columns.Bound(e => e.ProjectID).ReadOnly().Width(20);
+                columns.Bound(e => e.TaskName).ReadOnly().Width(100);
+                columns.Bound(e => e.TaskDetails).ReadOnly().Width(200);
+                columns.Bound(e => e.TaskStartDate).ReadOnly().Format("{0:dd/MM/yyyy}").Width(200);
+                columns.Bound(e => e.TaskEndDate).ReadOnly().Format("{0:dd/MM/yyyy}").Width(100);
+                columns.Bound(e => e.TotalHours).ReadOnly().Width(100);
+                columns.Bound(e => e.HoursSpent).Width(100);
+                columns.Command( commands => 
+                    {
+
+                        commands.Edit().ButtonType(GridButtonType.Image);
+                    }).Width(100);
+                              
+            })
+            .Sortable(sort => sort.OrderBy(order => order.Add(e => e.ProjectID).Descending())) // order by ProjectID so that inserted items appear on top of the grid (optional)
+            .Pageable())
+
+    </div>
+    </div>
+     <div>
+           @(Html.Telerik().ScriptRegistrar().
+           OnDocumentReady(@<text></text>)
+           .Globalization(true))
+           
+           
+    </div> 

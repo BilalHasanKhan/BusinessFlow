@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "TeamLeaderDashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+<div class="message">
+     <h4>My Team</h4>     
+     <p>Click here to view your team details</p>
+
+@Html.ActionLink("My Team","MyTeam","TeamLeader")
+</div>
+
+<div class="message">
+     <h4>Projects</h4>     
+     <p>Click here view projects assigned to your team</p>
+
+@Html.ActionLink("Projects", "TeamProjects", "TeamLeader")
+</div>
+
+<div class="message">
+     <h4>Make Procurement Request</h4>     
+     <p>Click here to make a procurement request to Procurement Department</p>
+@Html.ActionLink("Add Task", "ProcurementRequest", "TeamLeader")
+</div>
+@*<div class="message">
+     <h4>Assign Task to Memeber</h4>     
+     <p>Click here to View Accounts Dashboard</p>
+@Html.ActionLink("Assign Task", "AssignTaskToEmployee", "TeamLeader")
+</div>*@
+</div>

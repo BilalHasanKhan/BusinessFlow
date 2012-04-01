@@ -1,0 +1,64 @@
+﻿@model BusinessFlow.ViewModels.TeamProjectsViewModel
+
+@{
+    ViewBag.Title = "Team Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+
+   <script src="@Url.Content("~/Scripts/2011.3.1115/jquery-1.6.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+     <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+  
+}
+
+<div id="content">
+   <div class="gridMessageInfo">
+    <h4>Projects assigned to team</h4>     
+     <p>Data below gives brief specifications about the projects assigned to your team</p>
+               @(Html.Telerik().Grid<BusinessFlow.ViewModels.TeamProjectsViewModel>()
+            .Name("Grid")
+            .DataKeys(keys => keys.Add(e => e.ProjectID)
+                                          .RouteKey("ProjectID") // post the data key as "EnquiryID"
+            )
+             .DataBinding(dataBinding =>
+                 {
+                     dataBinding.Ajax()
+                         .Select("SelectProjects", "TeamLeader");
+                                                 
+                 })
+            .Columns(columns =>
+            {
+                columns.Bound(e => e.ProjectID).ReadOnly().Width(20);
+                columns.Bound(e => e.ConfirmDate).ReadOnly().Format("{0:dd/MM/yyyy}").Width(100);
+                columns.Bound(e => e.Requirement).ReadOnly().Width(200);
+                columns.Bound(e => e.DesignerName).ReadOnly().Width(200);
+                columns.Bound(e => e.DeliveryDate).ReadOnly().Format("{0:dd/MM/yyyy}").Width(100);
+                columns.Bound(e => e.Team).ReadOnly().Width(100);
+                columns.Bound(e => e.Status).ReadOnly().Width(100);
+                columns.Bound(e => e.FileName).ReadOnly().Width(100);
+                columns.Command( commands => 
+                    {
+                commands.Custom("Download").Text("Download").Action("Download", "TeamLeader").ButtonType(GridButtonType.Text);
+                    }).Width(100);
+                columns.Command( commands =>
+                    {
+
+                        commands.Custom("AddTask").Text("Add Task").Action("AddTaskForProject", "TeamLeader").ButtonType(GridButtonType.Text);
+                    }
+                ).Width(100);
+               
+            })
+            .Sortable(sort => sort.OrderBy(order => order.Add(e => e.ProjectID).Descending())) // order by ProjectID so that inserted items appear on top of the grid (optional)
+            .Pageable())
+
+</div>
+</div>
+   <div>
+           @(Html.Telerik().ScriptRegistrar().
+           OnDocumentReady(@<text></text>)
+           .Globalization(true))
+           
+           
+    </div> 

@@ -1,0 +1,50 @@
+@model BusinessFlow.Models.Enquiry
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<table>
+
+<tr>
+<td>
+  @Html.EditorFor(model => model.Contact)
+</td>
+
+</tr>
+<tr>
+<td>
+   @Html.EditorFor(model => model.SiteAddress)
+</td>
+</tr>
+
+<tr>
+<td>
+    <div class="editor-label">
+    @Html.LabelFor(model => model.Requirement) 
+    </div>
+    <div >
+    @Html.TextAreaFor(model => model.Requirement, 7, 30, new { @class = "textbox" })
+    @Html.ValidationMessageFor(model => model.Requirement)
+    </div>
+
+</td>
+</tr>
+<tr>
+<td> 
+<div class="editor-label">
+@Html.LabelFor(model => model.TentativeDeliveryDate)
+</div>
+<br />
+<div class="editor-field">
+@Html.Telerik().DatePickerFor(model => model.TentativeDeliveryDate)
+</div>
+</td>
+
+</tr>
+<tr>
+  @Html.EditorFor(model =>  model.DesignerContact)
+</tr>
+</table>
+
+ <div>
+  @(Html.Telerik().ScriptRegistrar())          
+ </div> 

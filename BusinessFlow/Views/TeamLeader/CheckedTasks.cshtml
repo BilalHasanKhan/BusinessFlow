@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BusinessFlow.ViewModels.TaskViewModel>
+
+@(Html.Telerik().Grid(Model)
+        .Name("CheckedTasks")
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.ProjectID).Width(100);
+            columns.Bound(o => o.TaskName).Width(200);
+            columns.Bound(o => o.TaskStartDate).Format("{0:MM/dd/yyyy}").Width(120);
+            columns.Bound(o => o.TaskEndDate).Format("{0:MM/dd/yyyy}").Width(120);
+            columns.Bound(o => o.EmployeeID).Width(50);
+        })
+        .Footer(false)
+) 

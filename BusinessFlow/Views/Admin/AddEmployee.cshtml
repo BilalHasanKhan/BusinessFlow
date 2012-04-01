@@ -1,0 +1,64 @@
+﻿@model BusinessFlow.Models.Employee
+
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Employee</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+ 
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+   <table>
+      
+        <tr>
+         <td>
+            @Html.EditorFor(model => model.EmployeeContact)
+           
+        </td>
+        </tr>
+</table>
+    <table>
+        <tr>
+        <td>
+            @Html.Label("Employee Role")
+        </td>
+        <td>
+        
+            @Html.DropDownList("roles", new SelectList(ViewBag.Roles))
+            @Html.ValidationMessageFor(model => model.EmployeeRole)
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            @Html.Label("Team")
+        </td>
+        <td>
+            @Html.DropDownListFor(model => model.EmployeeTeam, ((IEnumerable<BusinessFlow.Models.Team>)ViewBag.Teams).Select(option => new SelectListItem
+       {
+           Text = (option == null ? "None" : option.TeamName),
+           Value = option.TeamID.ToString(),
+           Selected = (Model != null) && (option.TeamID == Model.TeamID)
+       }), "Choose...")
+            @Html.ValidationMessageFor(model => model.TeamID)
+            </td>
+        </tr>
+
+       
+ 
+    </table>
+    
+    <br />
+    <br />
+            <input type="submit" value="Add Employee" class="button"/>
+       
+}
+<br />
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,48 @@
+@model IEnumerable<BusinessFlow.Models.Task>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            TaskName
+        </th>
+        <th>
+            Employee
+        </th>
+        <th>
+            Project
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
+        </td>
+        <td>
+			@item.TaskName
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Employee).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Project).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

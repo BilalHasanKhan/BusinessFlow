@@ -1,0 +1,48 @@
+﻿@model BusinessFlow.ViewModels.EnquiryDetailsViewModel
+
+@{
+    ViewBag.Title = "Details_All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Enquiry Details</h2>
+
+
+    <fieldset>
+    <legend>Tentative Delivery Date </legend>
+       <div class="display-field">@String.Format("{0:dddd, MMMM d, yyyy}", Model.Enquiry.TentativeDeliveryDate)</div>
+    </fieldset>
+    <fieldset>
+    <legend>Requirement Summary</legend>
+    <div class="display-field">@Model.Enquiry.Requirement</div>
+    </fieldset>
+    <fieldset>
+    <legend>Contact Details</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Contact>("Contact").Name("contact"))</div>
+    </fieldset>
+    <fieldset>
+    <legend>Site Address</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Address>("Address").Name("address"))</div>
+    </fieldset>
+    <fieldset>
+    <legend>Designer Contact</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.Contact>("Designer").Name("designer"))</div>
+    </fieldset>
+     <fieldset>
+    <legend>Additional Details</legend>
+    <div class="display-field">@(Html.Telerik().Grid<BusinessFlow.Models.EnquiryDetails>("Details").Name("enquiryDetails").Columns(columns =>
+            {
+                columns.Bound(e => e.FileName).ReadOnly().Width(300);
+                columns.Bound(e => e.Amount).ReadOnly().Width(300);
+                columns.Command(command => command.Custom("Download").Text("Download").Action("Download","Enquiries").ButtonType(GridButtonType.Text)).Width(200);
+
+            }
+
+    ))</div>
+    </fieldset>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Enquiry.EnquiryID }) 
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Confirm Project", "ConfirmProject", new { id = Model.Enquiry.EnquiryID })
+</p>

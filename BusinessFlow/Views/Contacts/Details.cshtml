@@ -1,0 +1,38 @@
+@model BusinessFlow.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Contact</legend>
+
+    <div class="display-label">ContactName</div>
+    <div class="display-field">@Model.ContactName</div>
+
+    <div class="display-label">ContactEmail</div>
+    <div class="display-field">@Model.ContactEmail</div>
+
+    <div class="display-label">MobileNumber</div>
+    <div class="display-field">@Model.MobileNumber</div>
+
+    <div class="display-label">AlternateName</div>
+    <div class="display-field">@Model.AlternateName</div>
+
+    <div class="display-label">AlternateEmail</div>
+    <div class="display-field">@Model.AlternateEmail</div>
+
+    <div class="display-label">AlternateMobileNumber</div>
+    <div class="display-field">@Model.AlternateMobileNumber</div>
+
+    <div class="display-label">Enquiry</div>
+    <div class="display-field">@(Model.Enquiry == null ? "None" : Model.Enquiry.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ContactID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

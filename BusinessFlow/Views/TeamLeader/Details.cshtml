@@ -1,0 +1,27 @@
+@model BusinessFlow.Models.Task
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Task</legend>
+
+    <div class="display-label">TaskName</div>
+    <div class="display-field">@Model.TaskName</div>
+
+    <div class="display-label">Employee</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Employee).ToString()</div>
+
+    <div class="display-label">Project</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Project).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TaskID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

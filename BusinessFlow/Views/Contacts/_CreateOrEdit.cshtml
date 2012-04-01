@@ -1,0 +1,52 @@
+@model BusinessFlow.Models.Contact
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ContactName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ContactName)
+    @Html.ValidationMessageFor(model => model.ContactName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ContactEmail)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ContactEmail)
+    @Html.ValidationMessageFor(model => model.ContactEmail)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MobileNumber)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MobileNumber)
+    @Html.ValidationMessageFor(model => model.MobileNumber)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AlternateName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.AlternateName)
+    @Html.ValidationMessageFor(model => model.AlternateName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AlternateEmail)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.AlternateEmail)
+    @Html.ValidationMessageFor(model => model.AlternateEmail)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AlternateMobileNumber)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.AlternateMobileNumber)
+    @Html.ValidationMessageFor(model => model.AlternateMobileNumber)
+</div>
+

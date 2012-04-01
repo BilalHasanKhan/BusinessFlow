@@ -1,0 +1,22 @@
+@model IEnumerable<BusinessFlow.Models.Enquiry>
+
+@{
+    ViewBag.Title = "Index";
+    Layout="~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+<div class="message">
+     <h4>Click here to submit New Enquiry</h4>     
+     <p>New Enquiries can be created for visiting customers</p>
+
+@Html.ActionLink("Submit Enquiry","Create","Enquiries")
+</div>
+
+<div class="message">
+     <h4>Click to view previous enquiries</h4>     
+     <p>Previous enquiries with different status can be viewed and updated</p>
+@Html.ActionLink("Dashboard","QuotationDashboard","Enquiries")
+</div>
+</div>
+

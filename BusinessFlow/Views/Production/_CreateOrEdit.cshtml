@@ -1,0 +1,75 @@
+@model BusinessFlow.Models.Enquiry
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TentativeDeliveryDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TentativeDeliveryDate)
+    @Html.ValidationMessageFor(model => model.TentativeDeliveryDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Requirement)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Requirement)
+    @Html.ValidationMessageFor(model => model.Requirement)
+</div>
+
+<div class="editor-label">
+    Contact
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ContactID, ((IEnumerable<BusinessFlow.Models.Contact>)ViewBag.PossibleContacts).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.ContactID.ToString(),
+        Selected = (Model != null) && (option.ContactID == Model.ContactID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.ContactID)
+</div>
+<div class="editor-label">
+    Address
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.AddressID, ((IEnumerable<BusinessFlow.Models.Address>)ViewBag.PossibleAddresses).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.AddressID.ToString(),
+        Selected = (Model != null) && (option.AddressID == Model.AddressID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.AddressID)
+</div>
+<div class="editor-label">
+    DesignerContact
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.DesignerContactID, ((IEnumerable<BusinessFlow.Models.Contact>)ViewBag.PossibleDesignerContacts).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.ContactID.ToString(),
+        Selected = (Model != null) && (option.ContactID == Model.DesignerContactID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.DesignerContactID)
+</div>
+<div class="editor-label">
+    Status
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.StatusId, ((IEnumerable<BusinessFlow.Models.StatusMaster>)ViewBag.PossibleStatus).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.StatusId.ToString(),
+        Selected = (Model != null) && (option.StatusId == Model.StatusId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.StatusId)
+</div>
+<div class="editor-label">
+    EnquiryDetails
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.EnquiryDetailsID, ((IEnumerable<BusinessFlow.Models.EnquiryDetails>)ViewBag.PossibleEnquiryDetails).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.EnquiryDetailsID.ToString(),
+        Selected = (Model != null) && (option.EnquiryDetailsID == Model.EnquiryDetailsID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.EnquiryDetailsID)
+</div>

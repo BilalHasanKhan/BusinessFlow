@@ -1,0 +1,59 @@
+@model IEnumerable<BusinessFlow.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            EmployeeName
+        </th>
+        <th>
+            EmployeeRole
+        </th>
+        <th>
+            IsTeamLeader
+        </th>
+        <th>
+            EmployeeTeam
+        </th>
+        <th>
+            Tasks
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeID })
+        </td>
+        <td>
+			@item.EmployeeName
+        </td>
+        <td>
+			@item.EmployeeRole
+        </td>
+        <td>
+			@item.IsTeamLeader
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.EmployeeTeam).ToString()
+        </td>
+        <td>
+			@(item.Tasks == null ? "None" : item.Tasks.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

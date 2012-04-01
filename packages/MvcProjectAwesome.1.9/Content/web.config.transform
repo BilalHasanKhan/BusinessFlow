@@ -1,0 +1,10 @@
+<configuration>
+    <system.web>
+        <pages>
+			<namespaces>
+				<add namespace="Omu.Awesome.Core" />
+				<add namespace="Omu.Awesome.Mvc.Helpers" />				
+			</namespaces>            
+        </pages>        
+    </system.web>    
+</configuration>

@@ -1,0 +1,71 @@
+@model IEnumerable<BusinessFlow.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ContactName
+        </th>
+        <th>
+            ContactEmail
+        </th>
+        <th>
+            MobileNumber
+        </th>
+        <th>
+            AlternateName
+        </th>
+        <th>
+            AlternateEmail
+        </th>
+        <th>
+            AlternateMobileNumber
+        </th>
+        <th>
+            Enquiry
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ContactID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ContactID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ContactID })
+        </td>
+        <td>
+			@item.ContactName
+        </td>
+        <td>
+			@item.ContactEmail
+        </td>
+        <td>
+			@item.MobileNumber
+        </td>
+        <td>
+			@item.AlternateName
+        </td>
+        <td>
+			@item.AlternateEmail
+        </td>
+        <td>
+			@item.AlternateMobileNumber
+        </td>
+        <td>
+			@(item.Enquiry == null ? "None" : item.Enquiry.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

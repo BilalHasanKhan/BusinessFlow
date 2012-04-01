@@ -1,0 +1,85 @@
+﻿@model BusinessFlow.ViewModels.TaskViewModel
+
+@{
+    ViewBag.Title = "Assign Task To Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+
+   <script src="@Url.Content("~/Scripts/2011.3.1115/jquery-1.6.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+     <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+     <script type="text/javascript">
+     $(document).ready(function () {
+            $(".gridMessageSuccess").hide();
+
+        });  
+
+        </script>
+}
+
+<div id="content">
+   <div class="gridMessageInfo">
+    <h4>Assign Task To Employee with Employee ID #@Request.QueryString["EmployeeID"].ToString()</h4>     
+     <p>Select a task to assign. Note: The list below shows only unassigned tasks.</p>
+
+
+@{ Html.Telerik().Grid<BusinessFlow.ViewModels.TaskViewModel>()
+        .Name("TaskAssign")
+        .Columns(columns =>
+        {
+            columns.Bound(t => t.TaskID )
+                   .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= TaskID #>' />")
+                   .Title("")
+                   .Width(36)
+                   .HtmlAttributes(new { style = "text-align:center" });
+            
+            columns.Bound(o => o.ProjectID).Width(100);
+            columns.Bound(o => o.TaskName).Width(200);
+            columns.Bound(o => o.TaskDescription).Width(200);
+            columns.Bound(o => o.TaskStartDate).Format("{0:MM/dd/yyyy}").Width(120);
+            columns.Bound(o => o.TaskEndDate).Format("{0:MM/dd/yyyy}").Width(120);
+        })
+        .DataBinding(dataBinding => dataBinding.Ajax()
+                .Select("_CheckBoxesAjax", "TeamLeader"))
+        .Scrollable()
+        .Pageable()
+        .Render();
+}
+</div>
+
+
+<p>
+    <button class="t-button t-state-default" onclick="displayCheckedOrders()">Assign Selected Tasks</button>
+    <script type="text/javascript">
+        
+
+        function displayCheckedOrders() {
+            var $checkedRecords = $(':checked');
+          
+             if ($checkedRecords.length < 1) {
+                alert('Check atleast one row to assign task.');
+                return;
+            }
+            
+            $('#result').load('@Url.Action("DisplayCheckedTasks", "TeamLeader")', $checkedRecords);
+            $(".gridMessageSuccess").show();
+        }
+    </script>
+</p>
+
+<div class="gridMessageSuccess display:none">
+ <h4>Task Assigned</h4>     
+     <p>The following Tasks has been assigned to Employee.</p>
+     <div id="result">
+     </div>
+</div> 
+</div>
+<div>
+           @(Html.Telerik().ScriptRegistrar().
+           OnDocumentReady(@<text></text>)
+           .Globalization(true))
+           
+           
+</div> 

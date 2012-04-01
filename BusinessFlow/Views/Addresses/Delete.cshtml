@@ -1,0 +1,38 @@
+@model BusinessFlow.Models.Address
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Address</legend>
+
+    <div class="display-label">Block</div>
+    <div class="display-field">@Model.Block</div>
+
+    <div class="display-label">Lane</div>
+    <div class="display-field">@Model.Lane</div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">@Model.City</div>
+
+    <div class="display-label">State</div>
+    <div class="display-field">@Model.State</div>
+
+    <div class="display-label">zipCode</div>
+    <div class="display-field">@Model.zipCode</div>
+
+    <div class="display-label">Enquiry</div>
+    <div class="display-field">@(Model.Enquiry == null ? "None" : Model.Enquiry.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

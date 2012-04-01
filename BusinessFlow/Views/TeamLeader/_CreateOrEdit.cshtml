@@ -1,0 +1,34 @@
+@model BusinessFlow.Models.Task
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TaskName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TaskName)
+    @Html.ValidationMessageFor(model => model.TaskName)
+</div>
+
+<div class="editor-label">
+    Employee
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.EmployeeID, ((IEnumerable<BusinessFlow.Models.Employee>)ViewBag.PossibleEmployees).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.EmployeeID.ToString(),
+        Selected = (Model != null) && (option.EmployeeID == Model.EmployeeID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.EmployeeID)
+</div>
+<div class="editor-label">
+    Project
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ProjectID, ((IEnumerable<BusinessFlow.Models.Project>)ViewBag.PossibleProjects).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.ProjectID.ToString(),
+        Selected = (Model != null) && (option.ProjectID == Model.ProjectID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.ProjectID)
+</div>

@@ -1,0 +1,57 @@
+﻿.ae-pagination
+{
+    text-align: right;
+    font-size: 100%;
+}
+.ae-pagination a
+{     
+    margin-right: 4px; 
+    padding: 0.5em 1.1em;
+    text-decoration: none;  
+}
+.ae-lookup-openbtn 
+{
+    float: left;
+    margin-left: 3px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.ae-lookup-clearbtn
+{
+    padding-top:5px;
+    padding-left:5px;
+    float: left;
+    margin-left: 3px;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+}
+.ae-lookup-textbox
+{
+    float:left;
+}
+.ae-lookup-searchlist
+{    
+    overflow: scroll !important;
+}
+.ae-lookup-selectedlist
+{
+    overflow: scroll !important;
+}
+.ae-lookup-list
+{
+    margin: 0;
+    padding 0;
+}
+.ae-lookup-morebtn
+{
+    display: block;
+    padding: 1em;
+    cursor: pointer;
+    text-align: center;
+    clear:both;
+}
+.ae-fixed {
+    position: fixed !important;
+}

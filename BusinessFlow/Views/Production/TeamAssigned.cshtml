@@ -1,0 +1,12 @@
+﻿@model BusinessFlow.Models.TeamProject
+@{
+    ViewBag.Title = "TeamAssigned";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+   <div class="success">
+       <h4>Project with project Id # @Html.DisplayFor(model => model.ProjectID) <br />has been assigned to Team "@Html.DisplayFor(model=>model.Team.TeamName)" </h4>     
+     <p></p>
+</div>
+</div>

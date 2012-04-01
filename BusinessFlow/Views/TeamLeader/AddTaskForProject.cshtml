@@ -1,0 +1,106 @@
+﻿@model BusinessFlow.Models.Task
+
+@{
+    ViewBag.Title = "Add Task For Project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head{
+<style type="text/css">
+    .field-validation-error
+    {
+        position: absolute;
+        display: block;
+    }
+    
+    * html .field-validation-error { position: relative; }
+    *+html .field-validation-error { position: relative; }
+    
+    .field-validation-error span
+    {
+        position: absolute;
+        white-space: nowrap;
+        color: red;
+        padding: 17px 5px 3px;
+        
+    }
+    
+    /* in-form editing */
+    .t-edit-form-container
+    {
+        width: 350px;
+        margin: 1em;
+    }
+    
+    .t-edit-form-container .editor-label,
+    .t-edit-form-container .editor-field
+    {
+        padding-bottom: 1em;
+        float: left;
+    }
+    
+    .t-edit-form-container .editor-label
+    {
+        width: 30%;
+        text-align: right;
+        padding-right: 3%;
+        clear: left;
+    }
+    
+    .t-edit-form-container .editor-field
+    {
+        width: 60%;
+    }
+</style>
+ 
+  
+}
+
+
+<div id="content">
+   <div class="gridMessageInfo">
+    <h4>Add Task for ProjectID @Request.QueryString["ProjectID"].ToString()</h4>     
+     <p>Click employeeId to view details of a particular employee and assign tasks.</p>
+
+@(Html.Telerik().Grid<BusinessFlow.Models.Task>()
+        .Name("taskGrid")
+        .DataKeys(keys => 
+        {
+            keys.Add(p => p.TaskID);
+        })
+        .DataBinding(dataBinding =>
+        {
+            dataBinding.Ajax()
+                .Select("SelectTasks", "TeamLeader")
+                .Insert("InsertTask", "TeamLeader")
+                .Update("SaveTask", "TeamLeader")
+                .Delete("DeleteTask", "TeamLeader");
+        })
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.TaskID).Width(50).ReadOnly();
+            columns.Bound(p => p.ProjectID).Width(50).ReadOnly();
+            columns.Bound(p => p.TaskName).Width(250);
+            columns.Bound(p => p.TaskDescription).Width(250);
+            columns.Bound(p => p.TaskStartDate).Width(130).Format("{0:d}");
+            columns.Bound(p => p.TaskEndDate).Width(130).Format("{0:d}");
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Text);
+                commands.Delete().ButtonType(GridButtonType.Text);
+            }).Width(180).Title("Commands");
+        })
+        .Editable(editing => editing.Mode(GridEditMode.PopUp))
+        .Pageable()
+        .Scrollable()
+        .Sortable() 
+        .ToolBar(commands => commands.Insert().ButtonType(GridButtonType.Text))      
+)
+</div>
+</div>
+   <div>
+           @(Html.Telerik().ScriptRegistrar().
+           OnDocumentReady(@<text></text>)
+           .Globalization(true))
+           
+           
+    </div> 

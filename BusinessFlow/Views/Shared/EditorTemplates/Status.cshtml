@@ -1,0 +1,6 @@
+﻿@model BusinessFlow.Models.StatusMaster 
+
+@(Html.Telerik().DropDownListFor(model => model.StatusId )  
+      
+.BindTo(new SelectList((System.Collections.IEnumerable)ViewBag.Status, "StatusId", "StatusName"))) 
+

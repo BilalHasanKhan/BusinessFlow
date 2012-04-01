@@ -1,0 +1,66 @@
+@model IEnumerable<BusinessFlow.Models.Enquiry>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            TentativeDeliveryDate
+        </th>
+        <th>
+            Requirement
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            SiteAddress
+        </th>
+        <th>
+            DesignerContact
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EnquiryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EnquiryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EnquiryID })
+        </td>
+        <td>
+			@String.Format("{0:g}", item.TentativeDeliveryDate)
+        </td>
+        <td>
+			@item.Requirement
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Contact).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.SiteAddress).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.DesignerContact).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Status).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

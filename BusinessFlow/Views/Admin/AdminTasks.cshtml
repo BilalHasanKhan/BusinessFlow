@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "AdminTasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+<div class="message">
+     <h4>Add Employee</h4>     
+     <p>Click here to add a new employee or edit employee roles</p>
+
+@Html.ActionLink("Add Employee","AddEmployee","Admin")
+</div>
+
+<div class="message">
+     <h4>Manage Roles</h4>     
+     <p>Click here to add a new roles or edit roles</p>
+
+@Html.ActionLink("Add Employee","AddRole","Admin")
+</div>
+
+<div class="message">
+     <h4>Add Team</h4>     
+     <p>Click here to add new team or edit existing teams</p>
+@Html.ActionLink("Add Team","AddTeam","Admin")
+</div>
+<div class="message">
+     <h4>Accounts Dashboard</h4>     
+     <p>Click here to View Accounts Dashboard</p>
+@Html.ActionLink("Accounts Dashboard","AccountsDashboard","Accounts")
+</div>
+<div class="message">
+     <h4>Production Dashboard</h4>     
+     <p>Click here to View Production Dashboard</p>
+@Html.ActionLink("Production Dashboard","Production","Accounts")
+</div>
+</div>

@@ -1,0 +1,372 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body
+{
+    background-color: White;
+    font-size: 0.75em;
+    font-family: Tahoma, Arial, Helvetica;
+    margin: 20px 25px 0px 25px;
+    padding: 0;
+    color: #595959;
+}
+
+a:link
+{
+    color: #034af3;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: #034af3;
+}
+a:hover
+{
+    color: #034af3;
+    text-decoration: none;
+}
+a:active
+{
+    color: #034af3;
+}
+
+p, ul
+{
+    margin-bottom: 5px;
+    line-height: 1.5em;
+}
+
+fieldset
+{
+    padding: 0px 15px;    
+}
+
+legend 
+{
+	font-weight:bold;
+	font-size:1.4em;
+	padding:5px;
+	color: Black;
+}
+
+label
+{
+    font-weight:bold;   
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    color: #595959;
+    font-family: Tahoma, Arial, Helvetica;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    font-size: 1.3em;
+    padding: 0;
+}
+h3
+{
+    font-size: 1.2em;
+    line-height:1.0em;
+}
+h4
+{
+    line-height:1.1em;
+    font-size: 1.1em;
+}
+h5
+{
+    font-size: 1em;
+}
+h6
+{
+   font-size: .8em; 
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page
+{
+    width: 100%;
+
+}
+
+#header
+{
+    position: relative;
+    height:83px;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0px 25px 0px 25px;
+    background-image:url(./Images/banner-background.png);
+    background-repeat:repeat-x;
+}
+
+#main
+{
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+#footer
+{
+    color: #999;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0;
+    font-size: .9em;
+}
+
+#forumsearch
+{
+	color:Red;
+	float:right;
+	padding:4px 10px;
+}
+
+#sitetitle
+{
+    display:block;
+    text-align:left;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: .8em;
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 25px !important;
+    padding-top:27px;
+}
+
+#sitesubtitle
+{
+	display: block;
+    text-align: left;
+    color: #92EF52;
+    padding-left: 2px;
+}
+
+#logindisplay
+{
+    font-size:1.1em;
+    display:block;
+    text-align:right;
+    color:White;
+    float:right;
+    padding-top:20px;
+}
+
+#logindisplay a:link, #logindisplay a:visited 
+{
+    color: White;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#logindisplay #gobutton
+{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font-family: Tahoma, Arial, Helvetica;
+	background-color: Transparent;
+	cursor: pointer;
+	color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+.nav ul 
+{
+	margin: 6px 0 0 0;
+	padding:0;
+}
+
+.nav ul li 
+{
+	list-style:none;
+	float:left;
+	background:none;
+	padding:0;
+}
+
+.nav ul li a 
+{
+	display:block;
+	border-right:1px dotted #a1a1a1;
+}
+
+.nav ul li.first a 
+{
+	border-left:1px dotted #a1a1a1;
+}
+	
+/* NAV MAIN LINKS */
+
+.nav a:link, .nav a:visited 
+{
+    padding: 0px 15px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.2em;
+    background-color: White;
+    color: #595959;
+}
+
+.nav .active a:link, .nav .active a:visited 
+{
+	color:#000;
+}
+
+.nav a:hover 
+{
+	color: #82b26e;
+    text-decoration: none;
+}
+
+
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.limelabel
+{
+	text-align: left;
+	color: #92EF52;
+	line-height: .6em;
+}
+
+.contentblock
+{
+    border: 1px solid #BCBCBC;
+    margin-bottom: 10px;
+	background-image:url(./Images/main-background.png);
+    background-repeat:repeat-x;
+    vertical-align: top;
+    padding: 0px 15px 15px 15px;
+}
+
+input.search 
+{
+    color:#FFF;
+    background:White url(Images/searc\h.png) no-repeat;
+    font-family: Tahoma, Arial, Helvetica;
+    padding:0 5px;
+    cursor:pointer;
+    text-decoration: none;
+    font-weight: bold;
+    border-width:0;
+    height:24px;
+}
+	
+.photo
+{
+    float:left; 
+    margin-right:15px;
+    border: solid 1px black;
+}
+	
+.textbox 
+{
+    display:block;
+    margin-bottom:5px;
+    vertical-align:top;
+    padding:2px;
+    color:#595959;
+    font-size:.8em;
+    border:1px solid #82b26e;
+    background:#F0F0F0 url(Images/text-background.png) repeat;
+}
+	
+input.button 
+{
+     color:White;
+     font-size:.9em;
+     font-weight:bold;
+     background:#336601 url(images/button-background.png) repeat-x;
+     padding:5px 10px;
+     cursor:pointer;
+}
+
+#content { margin:0 auto; width:auto; background:#FFF; padding:20px 0; }	
+.info,.success,.error,.warning,.tip,.secure,.message,.download,.purchase,.print{margin:20px 50px; padding:10px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-moz-box-shadow: 4px 4px #dfe1d8;-webkit-box-shadow: 4px 4px #dfe1d8;box-shadow: 4px 4px #dfe1d8;}
+.gridMessageSuccess,.gridMessageInfo{margin:1px 5px; padding:10px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-moz-box-shadow: 4px 4px #dfe1d8;-webkit-box-shadow: 4px 4px #dfe1d8;box-shadow: 4px 4px #dfe1d8;}
+
+/*Styling for text inside boxes*/
+h4 { margin:5px 5px 5px 80px;padding:0; font-size:16px; }
+p { font-size:10px; color:#000; margin:5px 5px 5px 80px; }
+
+/*Boxes*/
+.info{border:1px solid #0e7fad;color:#0e7fad;background:#c0e9fa url('images/info.png') no-repeat; background-position:30px 20px;}
+.success{border:1px solid #4f8746;color:#4f8746;background:#d4ffcd url('images/success.png') no-repeat; background-position:30px 20px;}
+.error{border:1px solid #641f1a;color:#641f1a;background:#ffd2d4 url('images/error.png') no-repeat; background-position:30px 20px;}
+.warning{border:1px solid #9d9c49;color:#9d9c49;background:#fdfdcb url('images/warning.png') no-repeat; background-position:30px 20px;}
+.tip{border:1px solid #c77d10;color:#c77d10;background:#f9d69e url('images/tip.png') no-repeat; background-position:30px 20px;}
+.secure{border:1px solid #9638f1;color:#336601;background:#e5cefc url('images/secure.png') no-repeat; background-position:30px 20px;}
+.message{border:1px solid #000;color:#000;background:#efefef url('images/message.png') no-repeat; background-position:30px 20px;}
+.download{border:1px solid #04b5eb;color:#04b5eb;background:#f7f7f7 url('images/download.png') no-repeat; background-position:30px 20px;}
+.purchase{border:1px solid #426164;color:#426164;background:#c2e1e3 url('images/purchase.png') no-repeat; background-position:30px 20px;}
+.print{border:1px solid #3c4b5e;color:#3c4b5e;background:#c8d9e3 url('images/print.png') no-repeat; background-position:30px 20px;}
+.gridMessageSuccess{border:1px solid #4f8746;color:#4f8746;background:#d4ffcd url('images/success.png') no-repeat; background-position:30px 20px;}
+.gridMessageInfo{border:1px solid #0e7fad;color:#0e7fad;background:#c0e9fa url('images/info.png') no-repeat; background-position:30px 20px;}    
+    
+ select {
+    border: 1px solid #93A9C8;
+    padding: 2px;
+    font-size: 1em;
+    color: #444;
+    width: 160px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -o-border-radius: 3px 3px 3px 3px;   
+ }

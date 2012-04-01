@@ -1,0 +1,44 @@
+@model BusinessFlow.Models.Address
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Block)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Block)
+    @Html.ValidationMessageFor(model => model.Block)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Lane)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Lane)
+    @Html.ValidationMessageFor(model => model.Lane)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.City)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.City)
+    @Html.ValidationMessageFor(model => model.City)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.State)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.State)
+    @Html.ValidationMessageFor(model => model.State)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.zipCode)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.zipCode)
+    @Html.ValidationMessageFor(model => model.zipCode)
+</div>
+

@@ -1,0 +1,68 @@
+﻿@model BusinessFlow.Models.Team
+
+@{
+    ViewBag.Title = "Assign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+<script src="@Url.Content("~/Scripts/2011.3.1115/jquery-1.6.4.min.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input[name='TeamType']").change(function () {
+
+            var radio_value = $(this).val();
+
+            if (radio_value == 2) {
+                $("#addTeam").show("slow");
+                $("#addNonTeam").hide();
+                $("#assign").show();
+            }
+            else if (radio_value == 1) {
+                $("#addNonTeam").show("slow");
+                $("#addTeam").hide();
+                $("#assign").show();
+            }
+        });
+
+        $("#addNonTeam").hide();
+        $("#addTeam").hide();
+        $("#assign").hide();
+
+    });
+  
+</script>
+}
+@using (Html.BeginForm("Assign", "Production"))
+{
+<div id="content">
+   <div class="gridMessageInfo">
+       <h4>Assign Team </h4>     
+     <p>Select Team Type to Enter Team Name</p>
+    
+@Html.RadioButton("TeamType", 1) Non Kenwood Team
+@Html.RadioButton("TeamType", 2) Kenwood Team
+
+<div id="addNonTeam" class="display:none">
+<br />
+<br />
+@Html.Label("Add Non Kenwood Team")
+@Html.TextBox("Non_Kenwood")
+</div>
+<div id="addTeam" class="display:none">
+<br />
+<br />
+@Html.Label("Add Kenwood Team")
+    @Html.DropDownList("Team",new SelectList(ViewBag.Teams,"TeamID","TeamName"))
+ @Html.ValidationMessageFor(model => model.TeamID)
+</div>
+<br />
+<input type="submit" value="Assign Team" id="assign" class="button"/>
+    @Html.Hidden("Enquiry", (int)ViewData["Enquiry"])
+    @Html.Hidden("Project", (int)ViewData["Project"])
+
+</div>
+</div>
+}
