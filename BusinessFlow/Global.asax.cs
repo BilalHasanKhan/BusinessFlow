@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using BusinessFlow.Models;
 using BusinessFlow.Filters;
+using Ninject;
 
 namespace BusinessFlow
 {
@@ -40,6 +41,13 @@ namespace BusinessFlow
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            RegisterDependicies();
+        }
+
+        private void RegisterDependicies()
+        {
+            var kernel = new StandardKernel();
+            DependencyResolver.SetResolver(new BusinessFlow.Resolver.NinjectResolver(kernel));
         }
     }
 }
