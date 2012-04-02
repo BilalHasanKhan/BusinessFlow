@@ -7,9 +7,7 @@ using Ninject.Parameters;
 
 namespace BusinessFlow
 {
-    public class Resolver
-    {
-        public class NinjectResolver : IDependencyResolver
+   public class NinjectResolver : IDependencyResolver
         {
             private readonly IKernel _kernel;
 
@@ -30,5 +28,5 @@ namespace BusinessFlow
                 return _kernel.GetAll(serviceType, new IParameter[0]);
             }
         }
-    }
+    
 }
