@@ -35,19 +35,33 @@ namespace BusinessFlow
 
         protected void Application_Start()
         {
+            RegisterDependicies();
             //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<BusinessFlow.Models.BusinessFlowContext>());
             System.Data.Entity.Database.SetInitializer<BusinessFlowContext>(new DbInitializer());
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            RegisterDependicies();
+            
         }
 
         private void RegisterDependicies()
         {
             var kernel = new StandardKernel();
-            DependencyResolver.SetResolver(new BusinessFlow.Resolver.NinjectResolver(kernel));
+            kernel.Bind<ITeamRepository>().To<TeamRepository>();
+            kernel.Bind<IEmployeeRepository>().To<EmployeeRepository>();
+            kernel.Bind<IAddressRepository>().To<AddressRepository>();
+            kernel.Bind<IClientRegisterRepository>().To<ClientRegisterRepository>();
+            kernel.Bind<IContactRepository>().To<ContactRepository>();
+            kernel.Bind<IEmployeeTaskRepository>().To<EmployeeTaskRepository>();
+            kernel.Bind<IEnquiryDetailsRepository>().To<EnquiryDetailsRepository>();
+            kernel.Bind<IEnquiryRepository>().To<EnquiryRepository>();
+            kernel.Bind<IProjectRepository>().To<ProjectRepository>();
+            kernel.Bind<IRoleRepository>().To<RoleRepository>();
+            kernel.Bind<IStatusRepository>().To<StatusRepository>();
+            kernel.Bind<ITaskRepository>().To<TaskRepository>();
+            kernel.Bind<ITeamProjectRepository>().To<TeamProjectRepository>();
+            DependencyResolver.SetResolver(new NinjectResolver(kernel));
         }
     }
 }
