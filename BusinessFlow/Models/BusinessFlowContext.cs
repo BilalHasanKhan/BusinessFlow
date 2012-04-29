@@ -17,7 +17,7 @@ namespace BusinessFlow.Models
         // Note: this will destroy and re-create your database with every model change.
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<BusinessFlow.Models.BusinessFlowContext>());
-        public BusinessFlowContext() : base("Kenwood") { }
+        public BusinessFlowContext() : base("BusinessFlow") { }
         public DbSet<BusinessFlow.Models.Enquiry> Enquiries { get; set; }
 
         public DbSet<BusinessFlow.Models.Address> Addresses { get; set; }
