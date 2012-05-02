@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Devtalk.EF.CodeFirst;
 
 
 namespace BusinessFlow.Models
@@ -79,41 +80,46 @@ namespace BusinessFlow.Models
    
     }
 
-    public class DbInitializer : DropCreateDatabaseIfModelChanges<BusinessFlowContext>
+    public class DbInitializer : DbContext
     {
-        protected override void Seed(BusinessFlowContext context)
+        public DbInitializer()
         {
-            base.Seed(context);
+            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<BusinessFlowContext>());
+        }
+    }
+    //    protected void Seed(BusinessFlowContext context)
+    //    {
+    //       // base.Seed(context);
 
            
 
 
-            var statusType = new List<StatusType>
-            {
-                 new StatusType { Type="Before 10K"},
-                 new StatusType {Type="After 10K"}
-            };
-            statusType.ForEach(s => context.StatusType.Add(s));
+    //        var statusType = new List<StatusType>
+    //        {
+    //             new StatusType { Type="Before 10K"},
+    //             new StatusType {Type="After 10K"}
+    //        };
+    //        statusType.ForEach(s => context.StatusType.Add(s));
 
-            var statusMaster = new List<StatusMaster>
-            {
-                new StatusMaster { StatusName="Await Appointment", StatusTypeId=1},
-                new StatusMaster { StatusName="Site Visited", StatusTypeId=1},
-                new StatusMaster { StatusName="Quote 1 Sent", StatusTypeId=1},
-                new StatusMaster { StatusName="Quote 2 Sent", StatusTypeId=1},
-                new StatusMaster { StatusName="Almost Confirmed", StatusTypeId=1},
-                new StatusMaster { StatusName="Quote 3 Sent", StatusTypeId=1},
-                new StatusMaster { StatusName="Quote 4 Sent", StatusTypeId=1},
-                new StatusMaster { StatusName="Await Discussion", StatusTypeId=1},
-                 new StatusMaster { StatusName="Drawings being prepared", StatusTypeId=2},
-                  new StatusMaster { StatusName="Drawings sent, await approval", StatusTypeId=2},
-                   new StatusMaster { StatusName="Revised drawings being prepared", StatusTypeId=2},
-                    new StatusMaster { StatusName="Await approval on revised drawings", StatusTypeId=2},
-                     new StatusMaster { StatusName="SignOff meeting to be fixed", StatusTypeId=2},
-                      new StatusMaster { StatusName="SignOff Fixed", StatusTypeId=2}
-            };
+    //        var statusMaster = new List<StatusMaster>
+    //        {
+    //            new StatusMaster { StatusName="Await Appointment", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Site Visited", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Quote 1 Sent", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Quote 2 Sent", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Almost Confirmed", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Quote 3 Sent", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Quote 4 Sent", StatusTypeId=1},
+    //            new StatusMaster { StatusName="Await Discussion", StatusTypeId=1},
+    //             new StatusMaster { StatusName="Drawings being prepared", StatusTypeId=2},
+    //              new StatusMaster { StatusName="Drawings sent, await approval", StatusTypeId=2},
+    //               new StatusMaster { StatusName="Revised drawings being prepared", StatusTypeId=2},
+    //                new StatusMaster { StatusName="Await approval on revised drawings", StatusTypeId=2},
+    //                 new StatusMaster { StatusName="SignOff meeting to be fixed", StatusTypeId=2},
+    //                  new StatusMaster { StatusName="SignOff Fixed", StatusTypeId=2}
+    //        };
 
-            //statusMaster.ForEach(s => context.StatusMaster.Add(s));
-        }
-    }
+    //        //statusMaster.ForEach(s => context.StatusMaster.Add(s));
+    //    }
+    //}
 }

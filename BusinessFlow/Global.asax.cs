@@ -37,7 +37,7 @@ namespace BusinessFlow
         {
             RegisterDependicies();
             //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<BusinessFlow.Models.BusinessFlowContext>());
-            System.Data.Entity.Database.SetInitializer<BusinessFlowContext>(new DbInitializer());
+            //System.Data.Entity.Database.SetInitializer<BusinessFlowContext>(new DbInitializer());
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
