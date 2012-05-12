@@ -38,7 +38,7 @@ namespace BusinessFlow.Controllers
         {
             CodeFirstRoleProvider roleProvider = new CodeFirstRoleProvider();
             roleProvider.CreateRole(role.RoleName);
-            return View();
+            return View("AdminTasks");
 
         }
 
@@ -70,7 +70,7 @@ namespace BusinessFlow.Controllers
             CodeFirstRoleProvider roleProvider = new CodeFirstRoleProvider();
             roleProvider.AddUsersToRoles(username, roles);
 
-            return View();
+            return View("AdminTasks");
 
         }
         //
