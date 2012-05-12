@@ -7,6 +7,7 @@ using System.Web.Routing;
 using BusinessFlow.Models;
 using BusinessFlow.Filters;
 using Ninject;
+using Devtalk.EF.CodeFirst;
 
 namespace BusinessFlow
 {
@@ -38,6 +39,7 @@ namespace BusinessFlow
             RegisterDependicies();
             //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<BusinessFlow.Models.BusinessFlowContext>());
             //System.Data.Entity.Database.SetInitializer<BusinessFlowContext>(new DbInitializer());
+          //  System.Data.Entity.Database.SetInitializer(new <BusinessFlowContext>());
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);

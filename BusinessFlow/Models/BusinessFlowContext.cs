@@ -57,7 +57,7 @@ namespace BusinessFlow.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
+            Database.SetInitializer<BusinessFlowContext>(new CreateDatabaseIfNotExists<BusinessFlowContext>());
             modelBuilder.Entity<Enquiry>().HasRequired(c => c.Contact).WithMany().HasForeignKey(c => c.ContactID).WillCascadeOnDelete(false);
             modelBuilder.Entity<Enquiry>().HasRequired(d => d.DesignerContact).WithMany(e=>e.Enquiry).HasForeignKey(d => d.DesignerContactID).WillCascadeOnDelete(false);
             modelBuilder.Entity<ClientRegister>().HasRequired(d => d.DeliveryAddID).WithMany().HasForeignKey(k => k.DeliveryAddressID).WillCascadeOnDelete(false);
@@ -80,13 +80,13 @@ namespace BusinessFlow.Models
    
     }
 
-    public class DbInitializer : DbContext
-    {
-        public DbInitializer()
-        {
-            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<BusinessFlowContext>());
-        }
-    }
+    //public class DbInitializer : DbContext
+    //{
+    //    public DbInitializer()
+    //    {
+    //        Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<BusinessFlowContext>());
+    //    }
+    //}
     //    protected void Seed(BusinessFlowContext context)
     //    {
     //       // base.Seed(context);
